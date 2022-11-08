@@ -1,6 +1,6 @@
-2
-train.txt
-test.txt
-obj.names
-training
+classes = 2
+train = /build/train.txt
+valid = /build/test.txt
+names = /build/obj.names
+backup = /build/training
 

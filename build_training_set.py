@@ -21,6 +21,8 @@ if not os.path.exists("build/training"):
 
 shutil.copyfile(obj_names_src, obj_name_build)
 shutil.copyfile("obj.data", os.path.join(build_dir, "obj.data"))
+shutil.copyfile("scripts/run_training.sh", os.path.join(build_dir, "run_training.sh"))
+shutil.copyfile("yolo4-greggs.cfg", os.path.join(build_dir, "yolo4-greggs.cfg"))
 
 f_test = open(test_file, "w")
 f_train = open(training_file, "w")
