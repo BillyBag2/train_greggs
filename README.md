@@ -14,3 +14,15 @@ Basic scripts are designed to run on a linux system with a basic installation of
 
 ## training (WIP)
 The intention is to run the docker container with the local directories mounted in the container as /build /data 
+
+# References
+
+* https://github.com/hollance/YOLO-CoreML-MPSNNGraph
+* https://www.codeproject.com/script/Content/ViewReadingList.aspx?rlid=33
+* https://medium.com/analytics-vidhya/train-a-custom-yolov4-tiny-object-detector-using-google-colab-b58be08c9593
+* https://blog.roboflow.com/training-yolov4-on-a-custom-dataset/
+* https://github.com/ankits16/CVRecorderFinal/blob/main/converters/YOLOv4toCoreML_Mpieter.ipynb
+* https://gist.github.com/TakaoNarikawa/aef13571eec97d78603688eef05b5389
+
+
+
