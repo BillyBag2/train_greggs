@@ -12,8 +12,19 @@ Basic scripts are designed to run on a linux system with a basic installation of
 
 [build_training_set.py](build_training_set.py) gathers everything needed into the build director.
 
-## training (WIP)
-The intention is to run the docker container with the local directories mounted in the container as /build /data 
+## training
+
+At the time of writing you may need to edit [run_training.sh](scripts\run_training.sh) or [more_training.sh](scripts\more_training.sh).
+
+Run [shell.sh](shell.sh) to start a docker shell. Then run in the docker shell `/build/xxx_training.sh`.
+
+### `run_training.sh`
+
+This script runs the training from the begining. When starting it is recommended that you use a single GPU. If you stop training you can restart by using `more_training.sh`. If you have more than one GPU it is recommended to stop after 1000 interations and then restart with the `more_training.sh` script with two GPUs enabled. Edit the script to enable this.
+
+### `more_training.sh`
+
+This script continues training from a saved state. It is recomended to stop training after 1000 iterations and restart with all GPUS if you have more than one.
 
 # References
 
