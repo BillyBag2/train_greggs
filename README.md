@@ -26,6 +26,7 @@ This script continues training from a saved state. It is recomended to stop trai
 
 # References
 
+* https://github.com/AlexeyAB/darknet
 * https://github.com/hollance/YOLO-CoreML-MPSNNGraph
 * https://www.codeproject.com/script/Content/ViewReadingList.aspx?rlid=33
 * https://medium.com/analytics-vidhya/train-a-custom-yolov4-tiny-object-detector-using-google-colab-b58be08c9593
