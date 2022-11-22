@@ -14,5 +14,5 @@ cd /root/darknet
 #./darknet detector train /build/obj.data /build/yolo4-tiny-greggs.cfg /build/training/yolo4-greggs_last.weights -dont_show -map -gpus 0,1
 
 # A single graphics card. Use for early training if more than one card.
-./darknet detector train /build/obj.data /build/yolo4-tiny-greggs.cfg /build/training/yolo4-greggs_last.weights -dont_show -map -gpus 0
+./darknet detector train /build/obj.data /build/yolo4-tiny-greggs.cfg /build/training/yolo4-tiny-greggs_last.weights -dont_show -map -gpus 0
 
