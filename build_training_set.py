@@ -10,6 +10,8 @@ dataset_dir = "./greggs_data"
 data_dir = os.path.join(dataset_dir,"data")
 # meta_dir contains meta data.
 meta_dir = os.path.join(dataset_dir,"meta")
+# test_dir contains test data
+test_dir = os.path.join(dataset_dir,"test")
 # build_dir is where the action happens.
 build_dir = "./build"
 # training_file contains a list of images to train.
@@ -18,6 +20,8 @@ training_file = os.path.join(build_dir, "train.txt")
 test_file = os.path.join(build_dir, "test.txt")
 # data_docker_path is the path docker sees the data.
 data_docker_path = "/data"
+# test_docker_path is the path docker sees the test data.
+test_docker_path = "/test"
 # obj_names_src is the source file for the class names.
 obj_names_src = os.path.join(meta_dir,"obj.names")
 # obj_name_build is the path to where the names are in the build directory.
@@ -41,27 +45,26 @@ shutil.copyfile("yolo4-tiny-greggs.cfg", os.path.join(build_dir, "yolo4-tiny-gre
 train_list = []
 test_list = []
 
-one_in = 0
-for dirpath, dnames, fnames in os.walk(data_dir):
-    for f in fnames:
-        if f.endswith(".jpg") or  f.endswith(".jpeg"):
-            text_file = os.path.join(dirpath,os.path.splitext(f)[0] + ".txt")
-            if os.path.exists(text_file):
-                one_in = one_in + 1
-                local_path = os.path.relpath(dirpath, "./greggs_data/data/")
-                docker_path = os.path.join(data_docker_path, local_path)
-                docker_file = os.path.join(docker_path,f)
-                if one_in >= test_one_in:
-                    one_in = 0;
-                    test_list.append(docker_file + "\n")
-                else:
-                    train_list.append(docker_file + "\n")
+def walker(walk_dir, docker_root):
+    ret_list = []
+    for dirpath, dnames, fnames in os.walk(walk_dir):
+        for f in fnames:
+            if f.endswith(".jpg") or  f.endswith(".jpeg"):
+                text_file = os.path.join(dirpath,os.path.splitext(f)[0] + ".txt")
+                if os.path.exists(text_file):
+                    local_path = os.path.relpath(dirpath, walk_dir)
+                    docker_path = os.path.join(docker_root, local_path)
+                    docker_file = os.path.join(docker_path,f)
+                    ret_list.append(docker_file + "\n")
+            elif f.endswith(".txt"):
+                pass
+            else:
+                print("Unexpected file extention in data dir")
+                print(os.path.join(dirpath,f))
+    return ret_list
 
-        elif f.endswith(".txt"):
-            pass
-        else:
-            print("Unexpected file extention in data dir")
-            print(os.path.join(dirpath,f))
+train_list = walker(data_dir, data_docker_path)
+test_list = walker(test_dir, test_docker_path)
 
 f_test = open(test_file, "w")
 random.shuffle(test_list)
