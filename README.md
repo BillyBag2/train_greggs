@@ -12,9 +12,9 @@ Simple scripts are designed to run on a linux system with a basic installation o
 
 ## Training
 
-At the time of writing you may need to edit [run_training.sh](scripts\run_training.sh) and [more_training.sh](scripts\more_training.sh).
+At the time of writing you may need to edit [run_training.sh](scripts/run_training.sh) and [more_training.sh](scripts/more_training.sh).
 
-or [tiny_run_training.sh](scripts\tiny_run_training.sh) or [tiny_more_training.sh](scripts\tiny_more_training.sh).
+or [tiny_run_training.sh](scripts/tiny_run_training.sh) or [tiny_more_training.sh](scripts/tiny_more_training.sh).
 
 Run [shell.sh](shell.sh) to start a docker shell. Then run in the docker shell `/build/xxx_training.sh`.
 
