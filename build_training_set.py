@@ -41,6 +41,7 @@ shutil.copyfile("scripts/more_training.sh", os.path.join(build_dir, "more_traini
 shutil.copyfile("scripts/tiny_more_training.sh", os.path.join(build_dir, "tiny_more_training.sh"))
 shutil.copyfile("yolo4-greggs.cfg", os.path.join(build_dir, "yolo4-greggs.cfg"))
 shutil.copyfile("yolo4-tiny-greggs.cfg", os.path.join(build_dir, "yolo4-tiny-greggs.cfg"))
+shutil.copyfile("scripts/Makefile", os.path.join(build_dir, "Makefile"))
 
 train_list = []
 test_list = []
