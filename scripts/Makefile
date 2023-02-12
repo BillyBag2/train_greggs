@@ -1,10 +1,11 @@
+NPROCESSORS := $(shell getconf _NPROCESSORS_ONLN)
+MAKEFLAGS += -j$(NPROCESSORS)
 
 # Create a list of existing txt files.
-space := $(subst ,, )
 
-ORG_TXT_FILES:= $(shell find /test -type f -name "*.txt" ! -name '*.N1.txt' -printf '%p*')
-ORG_TXT_FILES:= $(subst $(space),\$(space),$(ORG_TXT_FILES))
-ORG_TXT_FILES:= $(subst *,$(space),$(ORG_TXT_FILES))
+ORG_TXT_FILES:= \
+	$(shell find /test -type f -name "*.txt" ! -name '*.N1.txt') \
+	$(shell find /data -type f -name "*.txt" ! -name '*.N1.txt') \
 
 N1_TXT_FILES = $(patsubst %.txt,%.N1.txt,$(ORG_TXT_FILES))
 
